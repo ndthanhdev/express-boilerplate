@@ -1,0 +1,31 @@
+env:
+  es2021: true
+  node: true
+extends:
+  - airbnb-base
+  - plugin:prettier/recommended
+ignorePatterns:
+  - node_modules/
+  - .yarn/
+overrides:
+  - files:
+      - "**/*.{cjs}"
+    parserOptions:
+      sourceType: script
+parserOptions:
+  ecmaVersion: latest
+  sourceType: module
+rules:
+  # prefer named exports over default exports
+  "import/prefer-default-export": "off"
+  "import/no-default-export": "error"
+
+  # should add extensions to imports
+  "import/extensions":
+    - error
+    - ignorePackages
+    - js: always
+      mjs: always
+      cjs: always
+  quotes: ["error", "double"]
+  no-unused-vars: ["error", { "argsIgnorePattern": "^_" }]
